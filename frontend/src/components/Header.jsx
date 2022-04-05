@@ -9,10 +9,10 @@ function Header() {
   const { user } = useSelector((state) => state.auth);
 
   const onLogout = () => {
-    dispatch(logout())
-    dispatch(reset())
-    navigate('/')
-  }
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
 
   return (
     <header className="header">
@@ -21,11 +21,18 @@ function Header() {
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className="btn" onClick={onLogout}>
-              <FaSignOutAlt /> Logout
-            </button>
-          </li>
+          <>
+            <li>
+              <button className="btn" onClick={onLogout}>
+                <FaSignOutAlt /> Items
+              </button>
+            </li>
+            <li>
+              <button className="btn" onClick={onLogout}>
+                <FaSignOutAlt /> Logout
+              </button>
+            </li>
+          </>
         ) : (
           <>
             <li>
