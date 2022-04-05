@@ -43,7 +43,7 @@ function Items() {
 
     <section className="content">
       {items.length > 0 ? (
-        <div className="goals">
+        <div className="items">
           {items.map((item) => (
             <ItemItem key={item._id} item={item} />
           ))}
