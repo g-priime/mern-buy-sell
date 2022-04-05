@@ -30,7 +30,7 @@ const setItem = asyncHandler(async (req, res) => {
 })
 
 // @desc    Update item
-// @route   PUT /api/item/:id
+// @route   PUT /api/items/:id
 // @access  Private
 const updateItem = asyncHandler(async (req, res) => {
     const item = await Item.findById(req.params.id)
@@ -60,7 +60,7 @@ const updateItem = asyncHandler(async (req, res) => {
 })
 
 // @desc    Delete item
-// @route   DELETE /api/item/:id
+// @route   DELETE /api/items/:id
 // @access  Private
 const deleteItem = asyncHandler(async (req, res) => {
     const item = await Item.findById(req.params.id)

@@ -2,16 +2,16 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ItemForm from "../components/ItemForm";
-import GoalItem from "../components/GoalItem";
+import ItemItem from "../components/ItemItem";
 import Spinner from '../components/Spinner'
-import { getGoals, reset } from "../features/goals/goalSlice";
+import { getItems, reset } from "../features/items/itemSlice";
 
 function Items() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth);
-  const { goals, isLoading, isError, message } = useSelector((state) => state.goals)
+  const { items, isLoading, isError, message } = useSelector((state) => state.items)
 
   useEffect(() => {
     if(isError) {
@@ -22,7 +22,7 @@ function Items() {
       navigate("/login");
     }
 
-    dispatch(getGoals())
+    dispatch(getItems())
 
     return () => {
       dispatch(reset())
@@ -42,10 +42,10 @@ function Items() {
     <ItemForm />
 
     <section className="content">
-      {goals.length > 0 ? (
+      {items.length > 0 ? (
         <div className="goals">
-          {goals.map((goal) => (
-            <GoalItem key={goal._id} goal={goal} />
+          {items.map((item) => (
+            <ItemItem key={item._id} item={item} />
           ))}
         </div>
       ) : (<h3>You have not added any items</h3>)}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {createGoal} from '../features/goals/goalSlice'
+import {createItem} from '../features/items/itemSlice'
 
 function ItemForm() {
   const [text, setText] = useState("");
@@ -10,7 +10,7 @@ function ItemForm() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createGoal({text}))
+    dispatch(createItem({text}))
     setText('')
   };
 
