@@ -12,6 +12,15 @@ const getItems = asyncHandler(async (req, res) => {
     res.status(200).json(items)
 })
 
+// @desc    Get items of all users
+// @route   GET /api/items/all
+// @access  Private
+const getAllItems = asyncHandler(async (req, res) => {
+    const items = await Item.find()
+
+    res.status(200).json(items)
+})
+
 // @desc    Set item
 // @route   POST /api/items
 // @access  Private
@@ -89,6 +98,7 @@ const deleteItem = asyncHandler(async (req, res) => {
 
 module.exports = {
     getItems,
+    getAllItems,
     setItem,
     updateItem,
     deleteItem,
