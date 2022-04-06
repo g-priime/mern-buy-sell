@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemItem from "../components/ItemItem";
 import Spinner from '../components/Spinner'
-import { getItems, reset } from "../features/items/itemSlice";
+import { getAllItems, reset } from "../features/items/itemSlice";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function Dashboard() {
       navigate("/login");
     }
 
-    dispatch(getItems())
+    dispatch(getAllItems())
 
     return () => {
       dispatch(reset())
