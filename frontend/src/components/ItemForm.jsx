@@ -4,14 +4,16 @@ import {createItem} from '../features/items/itemSlice'
 
 function ItemForm() {
   const [text, setText] = useState("");
+  const [price, setPrice] = useState("");
 
   const dispatch = useDispatch()
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createItem({text}))
+    dispatch(createItem({text, price}))
     setText('')
+    setPrice('')
   };
 
   return (
@@ -25,6 +27,16 @@ function ItemForm() {
             id="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="price">Price</label>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
         <div className="form-group">
