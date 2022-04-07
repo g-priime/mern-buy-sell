@@ -5,15 +5,17 @@ import {createItem} from '../features/items/itemSlice'
 function ItemForm() {
   const [text, setText] = useState("");
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
 
   const dispatch = useDispatch()
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createItem({text, price}))
+    dispatch(createItem({text, price, category}))
     setText('')
     setPrice('')
+    setCategory('')
   };
 
   return (
@@ -37,6 +39,16 @@ function ItemForm() {
             id="price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="category">Category</label>
+          <input
+            type="text"
+            name="category"
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
           />
         </div>
         <div className="form-group">

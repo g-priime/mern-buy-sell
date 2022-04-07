@@ -11,6 +11,11 @@ const itemSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
+    category: {
+        type: String,
+        required: true,
+        ref: 'Category'
+    },
     text: {
         type: String,
         required: [true, 'Please add a text value']
