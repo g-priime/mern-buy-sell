@@ -30,8 +30,14 @@ const setItem = asyncHandler(async (req, res) => {
         throw new Error('Please add a text field')
     }
 
+    if(!req.body.price) {
+        res.status(400)
+        throw new Error('Please add a price')
+    }
+
     const item = await Item.create({
         text: req.body.text,
+        price: req.body.price,
         user: req.user.id,
     })
 
