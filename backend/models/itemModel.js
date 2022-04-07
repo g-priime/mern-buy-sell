@@ -6,6 +6,11 @@ const itemSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
+    username: {
+        type: String,
+        required: true,
+        ref: 'User'
+    },
     text: {
         type: String,
         required: [true, 'Please add a text value']

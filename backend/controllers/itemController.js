@@ -39,6 +39,7 @@ const setItem = asyncHandler(async (req, res) => {
         text: req.body.text,
         price: req.body.price,
         user: req.user.id,
+        username: req.user.name,
     })
 
     res.status(200).json(item)
