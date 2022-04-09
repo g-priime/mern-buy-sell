@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteItem } from "../features/items/itemSlice";
 
-function ItemItem({ item }) {
+function ItemCard({ item }) {
   const dispatch = useDispatch();
 
   return (
@@ -23,4 +23,4 @@ function ItemItem({ item }) {
   );
 }
 
-export default ItemItem;
+export default ItemCard;

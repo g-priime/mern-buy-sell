@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ItemForm from "../components/ItemForm";
-import ItemItem from "../components/ItemItem";
+import ItemCard from "../components/ItemCard";
 import Spinner from '../components/Spinner'
 import { getItems, reset } from "../features/items/itemSlice";
 
@@ -45,7 +45,7 @@ function Items() {
       {items.length > 0 ? (
         <div className="items">
           {items.map((item) => (
-            <ItemItem key={item._id} item={item} />
+            <ItemCard key={item._id} item={item} />
           ))}
         </div>
       ) : (<h3>You have not added any items</h3>)}
