@@ -40,9 +40,15 @@ const setItem = asyncHandler(async (req, res) => {
         throw new Error('Please add a category')
     }
 
+    if(!req.body.description) {
+        res.status(400)
+        throw new Error('Please add a description')
+    }
+
     const item = await Item.create({
         text: req.body.text,
         price: req.body.price,
+        description: req.body.description,
         category: req.body.category,
         user: req.user.id,
         username: req.user.name,

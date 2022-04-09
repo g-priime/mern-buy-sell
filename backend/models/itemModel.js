@@ -23,6 +23,10 @@ const itemSchema = mongoose.Schema({
     price: {
         type: String,
         required: [true, 'Please add a price']
+    },
+    description: {
+        type: String,
+        required: [true, 'Please add a description']
     }
 }, {
     timestamps: true,
