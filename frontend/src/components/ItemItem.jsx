@@ -8,6 +8,7 @@ function ItemItem({ item }) {
     <div className="item">
       <div>{new Date(item.createdAt).toLocaleString("en-US")}</div>
       <h2>{item.text}</h2>
+      <h4>Description: {item.description}</h4>
       <h4>Price: ${item.price}</h4>
       <h4>Owner: {item.username}</h4>
       <h4>Category: {item.category}</h4>
