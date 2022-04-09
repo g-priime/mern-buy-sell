@@ -14,7 +14,7 @@ function ItemCard({ item }) {
         <p className="price">${item.price}</p>
         <p>{item.description}</p>
         <p>
-          <button onClick={() => dispatch(deleteItem(item._id))}>
+          <button className="btn" onClick={() => dispatch(deleteItem(item._id))}>
             Add to cart
           </button>
         </p>
