@@ -23,6 +23,11 @@ function Header() {
         {user ? (
           <>
             <li>
+              <Link to="/kart">
+                <FaUser /> Kart
+              </Link>
+            </li>
+            <li>
               <Link to="/items">
                 <FaUser /> Items
               </Link>

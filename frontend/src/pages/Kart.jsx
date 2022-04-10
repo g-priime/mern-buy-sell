@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import ItemForm from "../components/ItemForm";
+
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getItems, reset, deleteItem } from "../features/items/itemSlice";
+import { getAllItems, reset, deleteItem } from "../features/items/itemSlice";
 
-function Items() {
+function Kart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ function Items() {
       navigate("/login");
     }
 
-    dispatch(getItems());
+    dispatch(getAllItems());
 
     return () => {
       dispatch(reset());
@@ -39,10 +39,8 @@ function Items() {
     <>
       <section className="heading">
         <h1>Welcome {user && user.name}</h1>
-        <p>Buy Sell Items</p>
+        <p>Buy Sell Kart</p>
       </section>
-
-      <ItemForm />
 
       <section className="content">
         {items.length > 0 ? (
@@ -56,18 +54,18 @@ function Items() {
                     className="btn"
                     onClick={() => dispatch(deleteItem(item._id))}
                   >
-                    Remove Item
+                    Add to cart
                   </button>
                 }
               />
             ))}
           </div>
         ) : (
-          <h3>You have not added any items to sell</h3>
+          <h3>You have not added any items to your kart</h3>
         )}
       </section>
     </>
   );
 }
 
-export default Items;
+export default Kart;
