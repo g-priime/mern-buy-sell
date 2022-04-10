@@ -81,7 +81,31 @@ const updateItem = asyncHandler(async (req, res) => {
     }
 
     const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
-        new: true
+        new: true,
+    })
+
+    res.status(200).json(updatedItem)
+})
+
+// @desc    Adds buyer to item
+// @route   PUT /api/items/buyer/:id
+// @access  Private
+const addBuyerToItem = asyncHandler(async (req, res) => {
+    const item = await Item.findById(req.params.id)
+
+    if(!item) {
+        res.status(400)
+        throw new Error('Item not found')
+    }
+
+    // Check for user
+    if(!req.user) {
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
     })
 
     res.status(200).json(updatedItem)
@@ -121,4 +145,5 @@ module.exports = {
     setItem,
     updateItem,
     deleteItem,
+    addBuyerToItem,
 }

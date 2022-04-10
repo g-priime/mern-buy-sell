@@ -27,7 +27,12 @@ const itemSchema = mongoose.Schema({
     description: {
         type: String,
         required: [true, 'Please add a description']
-    }
+    },
+    buyer: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'User'
+    },
 }, {
     timestamps: true,
 })
