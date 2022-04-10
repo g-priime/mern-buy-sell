@@ -1,8 +1,4 @@
-import { useDispatch } from "react-redux";
-import { deleteItem } from "../features/items/itemSlice";
-
-function ItemCard({ item }) {
-  const dispatch = useDispatch();
+function ItemCard({ item, itemButton }) {
 
   return (
     <>
@@ -13,11 +9,7 @@ function ItemCard({ item }) {
         <h1>{item.text}</h1>
         <p className="price">${item.price}</p>
         <p>{item.description}</p>
-        <p>
-          <button className="btn" onClick={() => dispatch(deleteItem(item._id))}>
-            Add to cart
-          </button>
-        </p>
+        <p>{itemButton}</p>
       </div>
     </>
   );
