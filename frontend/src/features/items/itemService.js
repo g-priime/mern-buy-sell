@@ -15,6 +15,21 @@ const createItem = async (itemData, token) => {
   return response.data;
 };
 
+// Add buyer attribute to item
+const addBuyerToItem = async (itemId, token) => {
+  const itemData = {text:"text", price:"price", category:"category", description:"description"}
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(API_URL + "buyer/" + itemId, itemData, config);
+
+  return response.data;
+};
+
 // Get user items
 const getItems = async (token) => {
   const config = {
@@ -56,6 +71,7 @@ const deleteItem = async (itemId, token) => {
 
 const itemService = {
   createItem,
+  addBuyerToItem,
   getItems,
   getAllItems,
   deleteItem,

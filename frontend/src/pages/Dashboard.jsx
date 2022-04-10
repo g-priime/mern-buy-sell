@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getAllItems, reset, deleteItem } from "../features/items/itemSlice";
+import { getAllItems, reset, addBuyerToItem } from "../features/items/itemSlice";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ function Dashboard() {
                 itemButton={
                   <button
                     className="btn"
-                    onClick={() => dispatch(deleteItem(item._id))}
+                    onClick={() => dispatch(addBuyerToItem(item._id))}
                   >
                     Add to cart
                   </button>
