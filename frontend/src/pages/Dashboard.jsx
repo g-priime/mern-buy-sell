@@ -24,6 +24,7 @@ function Dashboard() {
       navigate("/login");
     }
 
+    // Get items posted by all users
     dispatch(getAllItems());
 
     return () => {

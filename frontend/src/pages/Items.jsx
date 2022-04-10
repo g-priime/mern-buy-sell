@@ -24,6 +24,7 @@ function Items() {
       navigate("/login");
     }
 
+    // Get items posted by currently logged in user only
     dispatch(getItems());
 
     return () => {
