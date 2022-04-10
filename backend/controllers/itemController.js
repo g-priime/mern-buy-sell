@@ -104,8 +104,15 @@ const addBuyerToItem = asyncHandler(async (req, res) => {
         throw new Error('User not found')
     }
 
-    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
+    const updatedItem = await Item.findByIdAndUpdate(req.params.id, {
+        text: req.body.text,
+        price: req.body.price,
+        description: req.body.description,
+        category: req.body.category,
+        user: req.body.user,
+        username: req.body.username,
+        buyer: req.user.id,
+        new: false,
     })
 
     res.status(200).json(updatedItem)

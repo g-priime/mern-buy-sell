@@ -17,7 +17,8 @@ const createItem = async (itemData, token) => {
 
 // Add buyer attribute to item
 const addBuyerToItem = async (itemId, token) => {
-  const itemData = {text:"text", price:"price", category:"category", description:"description"}
+  // Won't let me send without this data, so set to empty object - to be fixed later
+  const itemData = {} 
 
   const config = {
     headers: {
