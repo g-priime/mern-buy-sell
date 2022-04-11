@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getAllItems, reset, deleteItem } from "../features/items/itemSlice";
+import { getKartItems, reset, deleteItem } from "../features/items/itemSlice";
 
 function Kart() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Kart() {
       navigate("/login");
     }
 
-    dispatch(getAllItems());
+    dispatch(getKartItems());
 
     return () => {
       dispatch(reset());

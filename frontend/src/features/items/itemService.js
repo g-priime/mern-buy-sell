@@ -44,6 +44,19 @@ const getItems = async (token) => {
   return response.data;
 };
 
+// Get items for kart of currently logged in user
+const getKartItems = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(API_URL + "kart", config);
+
+  return response.data;
+};
+
 // Get items of all users
 const getAllItems = async (token) => {
   const config = {
@@ -74,6 +87,7 @@ const itemService = {
   createItem,
   addBuyerToItem,
   getItems,
+  getKartItems,
   getAllItems,
   deleteItem,
 };
