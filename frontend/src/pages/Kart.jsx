@@ -54,7 +54,7 @@ function Kart() {
                     className="btn"
                     onClick={() => dispatch(deleteItem(item._id))}
                   >
-                    Add to cart
+                    Remove from kart
                   </button>
                 }
               />

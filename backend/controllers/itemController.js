@@ -3,11 +3,20 @@ const asyncHandler = require('express-async-handler')
 const Item = require('../models/itemModel')
 const User = require('../models/userModel')
 
-// @desc    Get items
+// @desc    Get items posted by currently logged in user
 // @route   GET /api/items
 // @access  Private
 const getItems = asyncHandler(async (req, res) => {
     const items = await Item.find({ user: req.user.id })
+
+    res.status(200).json(items)
+})
+
+// @desc    Get items in kart of currently logged in user
+// @route   GET /api/items/kart
+// @access  Private
+const getKartItems = asyncHandler(async (req, res) => {
+    const items = await Item.find({ buyer: req.user.id })
 
     res.status(200).json(items)
 })
@@ -148,6 +157,7 @@ const deleteItem = asyncHandler(async (req, res) => {
 
 module.exports = {
     getItems,
+    getKartItems,
     getAllItems,
     setItem,
     updateItem,
