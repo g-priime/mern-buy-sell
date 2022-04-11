@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getAllItems, reset, addBuyerToItem } from "../features/items/itemSlice";
+import { getAvailableItems, reset, addBuyerToItem } from "../features/items/itemSlice";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -24,8 +24,8 @@ function Dashboard() {
       navigate("/login");
     }
 
-    // Get items posted by all users
-    dispatch(getAllItems());
+    // Get items not currently in any user karts
+    dispatch(getAvailableItems());
 
     return () => {
       dispatch(reset());
@@ -62,7 +62,7 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <h3>There are no items for sale at this time</h3>
+          <h3>There are no items available for sale at this time</h3>
         )}
       </section>
     </>

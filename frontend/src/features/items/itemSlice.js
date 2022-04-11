@@ -85,6 +85,25 @@ export const getKartItems = createAsyncThunk(
   }
 );
 
+// Get items not currently in any user karts
+export const getAvailableItems = createAsyncThunk(
+  "items/getAvailable",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await itemService.getAvailableItems(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Get items of all users
 export const getAllItems = createAsyncThunk(
   "items/getAll",
@@ -166,6 +185,19 @@ export const itemSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(getKartItems.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAvailableItems.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAvailableItems.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.items = action.payload;
+      })
+      .addCase(getAvailableItems.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
