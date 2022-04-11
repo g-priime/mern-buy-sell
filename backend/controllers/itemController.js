@@ -21,6 +21,15 @@ const getKartItems = asyncHandler(async (req, res) => {
     res.status(200).json(items)
 })
 
+// @desc    Get items not currently in any user kart
+// @route   GET /api/items/available
+// @access  Private
+const getAvailableItems = asyncHandler(async (req, res) => {
+    const items = await Item.find({ buyer: null })
+
+    res.status(200).json(items)
+})
+
 // @desc    Get items of all users
 // @route   GET /api/items/all
 // @access  Private
@@ -158,6 +167,7 @@ const deleteItem = asyncHandler(async (req, res) => {
 module.exports = {
     getItems,
     getKartItems,
+    getAvailableItems,
     getAllItems,
     setItem,
     updateItem,
