@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getKartItems, reset, deleteItem } from "../features/items/itemSlice";
+import { getKartItems, reset, removeBuyerFromItem } from "../features/items/itemSlice";
 
 function Kart() {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function Kart() {
                 itemButton={
                   <button
                     className="btn"
-                    onClick={() => dispatch(deleteItem(item._id))}
+                    onClick={() => dispatch(removeBuyerFromItem(item._id))}
                   >
                     Remove from kart
                   </button>

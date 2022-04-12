@@ -9,6 +9,7 @@ const {
   updateItem,
   deleteItem,
   addBuyerToItem,
+  removeBuyerFromItem,
 } = require("../controllers/itemController");
 
 const {protect} = require('../middleware/authMiddleware')
@@ -19,5 +20,6 @@ router.route('/available').get(protect, getAvailableItems)
 router.route('/all').get(protect, getAllItems)
 router.route('/:id').delete(protect, deleteItem).put(protect, updateItem)
 router.route('/buyer/:id').put(protect, addBuyerToItem)
+router.route('/removeBuyer/:id').put(protect, removeBuyerFromItem)
 
 module.exports = router;

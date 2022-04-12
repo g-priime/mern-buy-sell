@@ -31,6 +31,22 @@ const addBuyerToItem = async (itemId, token) => {
   return response.data;
 };
 
+// Make buyer attribute null for item
+const removeBuyerFromItem = async (itemId, token) => {
+  // Won't let me send without this data, so set to empty object - to be fixed later
+  const itemData = {} 
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(API_URL + "removeBuyer/" + itemId, itemData, config);
+
+  return response.data;
+};
+
 // Get user items
 const getItems = async (token) => {
   const config = {
@@ -99,6 +115,7 @@ const deleteItem = async (itemId, token) => {
 const itemService = {
   createItem,
   addBuyerToItem,
+  removeBuyerFromItem,
   getItems,
   getKartItems,
   getAvailableItems,

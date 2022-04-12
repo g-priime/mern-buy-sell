@@ -47,6 +47,25 @@ export const addBuyerToItem = createAsyncThunk(
   }
 );
 
+// Make buyer attribute null for item
+export const removeBuyerFromItem = createAsyncThunk(
+  "items/removeBuyer",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await itemService.removeBuyerFromItem(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Get user items
 export const getItems = createAsyncThunk(
   "items/get",
@@ -241,6 +260,21 @@ export const itemSlice = createSlice({
         );
       })
       .addCase(addBuyerToItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(removeBuyerFromItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(removeBuyerFromItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.items = state.items.filter(
+          (item) => item._id !== action.payload._id
+        );
+      })
+      .addCase(removeBuyerFromItem.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
