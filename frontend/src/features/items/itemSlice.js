@@ -236,7 +236,9 @@ export const itemSlice = createSlice({
       .addCase(addBuyerToItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.items = action.payload;
+        state.items = state.items.filter(
+          (item) => item._id !== action.payload._id
+        );
       })
       .addCase(addBuyerToItem.rejected, (state, action) => {
         state.isLoading = false;
