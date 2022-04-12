@@ -4,7 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getAvailableItems, getCategoryItems, reset, addBuyerToItem } from "../features/items/itemSlice";
+import {
+  getAvailableItems,
+  getCategoryItems,
+  reset,
+  addBuyerToItem,
+} from "../features/items/itemSlice";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -19,8 +24,8 @@ function Dashboard() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(getCategoryItems(description))
-    setDescription('')
+    dispatch(getCategoryItems(description));
+    setDescription("");
   };
 
   useEffect(() => {
@@ -52,24 +57,30 @@ function Dashboard() {
       </section>
 
       <section className="form">
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <button className="btn btn-block" type="submit">
-            Search
-          </button>
-        </div>
-      </form>
-    </section>
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <label htmlFor="description">Description</label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <button className="btn btn-block" type="submit">
+              Search
+            </button>
+            <button
+              className="btn btn-block"
+              onClick={() => dispatch(getAvailableItems())}
+            >
+              Clear search results
+            </button>
+          </div>
+        </form>
+      </section>
 
       <section className="content">
         {items.length > 0 ? (
