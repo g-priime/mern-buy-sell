@@ -86,6 +86,19 @@ const getAvailableItems = async (token) => {
   return response.data;
 };
 
+// Get items belonging to certain category
+const getCategoryItems = async (category, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(API_URL + "category/" + category, config);
+
+  return response.data;
+};
+
 // Get items of all users
 const getAllItems = async (token) => {
   const config = {
@@ -119,6 +132,7 @@ const itemService = {
   getItems,
   getKartItems,
   getAvailableItems,
+  getCategoryItems,
   getAllItems,
   deleteItem,
 };

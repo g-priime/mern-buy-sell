@@ -123,6 +123,25 @@ export const getAvailableItems = createAsyncThunk(
   }
 );
 
+// Get items belonging to certain category
+export const getCategoryItems = createAsyncThunk(
+  "items/getCategory",
+  async (category, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await itemService.getCategoryItems(category, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Get items of all users
 export const getAllItems = createAsyncThunk(
   "items/getAll",
@@ -217,6 +236,19 @@ export const itemSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(getAvailableItems.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCategoryItems.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCategoryItems.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.items = action.payload;
+      })
+      .addCase(getCategoryItems.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

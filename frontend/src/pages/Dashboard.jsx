@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getAvailableItems, reset, addBuyerToItem } from "../features/items/itemSlice";
+import { getCategoryItems, reset, addBuyerToItem } from "../features/items/itemSlice";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -14,6 +14,14 @@ function Dashboard() {
   const { items, isLoading, isError, message } = useSelector(
     (state) => state.items
   );
+
+  const [description, setDescription] = useState("");
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(getCategoryItems(description))
+    setDescription('')
+  };
 
   useEffect(() => {
     if (isError) {
@@ -25,7 +33,7 @@ function Dashboard() {
     }
 
     // Get items not currently in any user karts
-    dispatch(getAvailableItems());
+    dispatch(getCategoryItems('Kitchen'));
 
     return () => {
       dispatch(reset());
@@ -42,6 +50,26 @@ function Dashboard() {
         <h1>Welcome {user && user.name}</h1>
         <p>Buy Sell Dashboard</p>
       </section>
+
+      <section className="form">
+      <form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <button className="btn btn-block" type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+    </section>
 
       <section className="content">
         {items.length > 0 ? (

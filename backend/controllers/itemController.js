@@ -30,6 +30,15 @@ const getAvailableItems = asyncHandler(async (req, res) => {
     res.status(200).json(items)
 })
 
+// @desc    Get items belonging to certain category
+// @route   GET /api/items/category/:id
+// @access  Private
+const getCategoryItems = asyncHandler(async (req, res) => {
+    const items = await Item.find({ category: req.params.id })
+
+    res.status(200).json(items)
+})
+
 // @desc    Get items of all users
 // @route   GET /api/items/all
 // @access  Private
@@ -199,6 +208,7 @@ module.exports = {
     getItems,
     getKartItems,
     getAvailableItems,
+    getCategoryItems,
     getAllItems,
     setItem,
     updateItem,
