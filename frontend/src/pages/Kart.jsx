@@ -4,7 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getKartItems, reset, removeBuyerFromItem } from "../features/items/itemSlice";
+import {
+  getKartItems,
+  reset,
+  removeBuyerFromItem,
+} from "../features/items/itemSlice";
 
 function Kart() {
   const navigate = useNavigate();
@@ -63,6 +67,10 @@ function Kart() {
         ) : (
           <h3>You have not added any items to your kart</h3>
         )}
+      </section>
+
+      <section className="footer">
+        <button className="btn btn-checkout">Proceed to checkout</button>
       </section>
     </>
   );

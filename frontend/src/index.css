@@ -52,6 +52,16 @@ h3 {
   margin-bottom: 60px;
 }
 
+.footer {
+  display: flex;
+  justify-content: right;
+  align-items: stretch;
+  padding: 20px 0;
+  
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+
 .header ul {
   display: flex;
   align-items: center;
@@ -196,6 +206,10 @@ h3 {
 
 .btn-block {
   width: 100%;
+  margin-bottom: 20px;
+}
+
+.btn-checkout {
   margin-bottom: 20px;
 }
 
