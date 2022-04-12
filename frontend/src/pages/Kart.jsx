@@ -70,12 +70,16 @@ function Kart() {
       </section>
 
       <section className="footer">
-        <button
-          className="btn btn-checkout"
-          onClick={() => navigate("/checkout")}
-        >
-          Proceed to checkout
-        </button>
+        {items.length > 0 ? (
+          <button
+            className="btn btn-checkout"
+            onClick={() => navigate("/checkout")}
+          >
+            Proceed to checkout
+          </button>
+        ) : (
+          <></>
+        )}
       </section>
     </>
   );
