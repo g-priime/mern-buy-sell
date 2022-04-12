@@ -123,7 +123,7 @@ export const getAvailableItems = createAsyncThunk(
   }
 );
 
-// Get items belonging to certain category
+// Get available items belonging to certain category
 export const getCategoryItems = createAsyncThunk(
   "items/getCategory",
   async (category, thunkAPI) => {

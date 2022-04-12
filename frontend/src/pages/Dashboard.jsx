@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getCategoryItems, reset, addBuyerToItem } from "../features/items/itemSlice";
+import { getAvailableItems, getCategoryItems, reset, addBuyerToItem } from "../features/items/itemSlice";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function Dashboard() {
     }
 
     // Get items not currently in any user karts
-    dispatch(getCategoryItems('Kitchen'));
+    dispatch(getAvailableItems());
 
     return () => {
       dispatch(reset());

@@ -30,11 +30,11 @@ const getAvailableItems = asyncHandler(async (req, res) => {
     res.status(200).json(items)
 })
 
-// @desc    Get items belonging to certain category
+// @desc    Get available items belonging to certain category
 // @route   GET /api/items/category/:id
 // @access  Private
 const getCategoryItems = asyncHandler(async (req, res) => {
-    const items = await Item.find({ category: req.params.id })
+    const items = await Item.find({ buyer: null, category: req.params.id })
 
     res.status(200).json(items)
 })

@@ -86,7 +86,7 @@ const getAvailableItems = async (token) => {
   return response.data;
 };
 
-// Get items belonging to certain category
+// Get available items belonging to certain category
 const getCategoryItems = async (category, token) => {
   const config = {
     headers: {
