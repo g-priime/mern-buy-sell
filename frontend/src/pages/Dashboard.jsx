@@ -8,7 +8,7 @@ import {
   reset,
   addBuyerToItem,
 } from "../features/items/itemSlice";
-import SearchForm from '../components/SearchForm'
+import SearchForm from "../components/SearchForm";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -47,9 +47,11 @@ function Dashboard() {
       </section>
 
       <SearchForm />
-      {cat ? (<>Results for: {cat}</>) : (<>All items</>)}
 
       <section className="content">
+        <div className="category-heading">
+          {cat ? <>Results for: {cat}</> : <>All items</>}
+        </div>
         {items.length > 0 ? (
           <div className="items">
             {items.map((item) => (
