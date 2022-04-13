@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import {
   getAvailableItems,
-  getCategoryItems,
   reset,
   addBuyerToItem,
 } from "../features/items/itemSlice";
+import SearchForm from '../components/SearchForm'
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -19,14 +18,6 @@ function Dashboard() {
   const { items, isLoading, isError, message } = useSelector(
     (state) => state.items
   );
-
-  const [description, setDescription] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    dispatch(getCategoryItems(description));
-    setDescription("");
-  };
 
   useEffect(() => {
     if (isError) {
@@ -56,31 +47,7 @@ function Dashboard() {
         <p>Buy Sell Dashboard</p>
       </section>
 
-      <section className="form">
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <input
-              type="text"
-              name="description"
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <button className="btn btn-block" type="submit">
-              Search
-            </button>
-            <button
-              className="btn btn-block"
-              onClick={() => dispatch(getAvailableItems())}
-            >
-              Clear search results
-            </button>
-          </div>
-        </form>
-      </section>
+      <SearchForm />
 
       <section className="content">
         {items.length > 0 ? (
