@@ -7,6 +7,7 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: "",
+  cat: "",
 };
 
 // create new item
@@ -234,6 +235,7 @@ export const itemSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.items = action.payload;
+        state.cat = ''
       })
       .addCase(getAvailableItems.rejected, (state, action) => {
         state.isLoading = false;
@@ -247,6 +249,7 @@ export const itemSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.items = action.payload;
+        state.cat = action.meta.arg;
       })
       .addCase(getCategoryItems.rejected, (state, action) => {
         state.isLoading = false;

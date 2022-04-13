@@ -15,7 +15,7 @@ function Dashboard() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { items, isLoading, isError, message } = useSelector(
+  const { items, isLoading, isError, message, cat } = useSelector(
     (state) => state.items
   );
 
@@ -43,11 +43,11 @@ function Dashboard() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user && user.name}</h1>
         <p>Buy Sell Dashboard</p>
       </section>
 
       <SearchForm />
+      {cat}
 
       <section className="content">
         {items.length > 0 ? (
@@ -68,7 +68,7 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <h3>There are no items available for sale at this time</h3>
+          <h3>There are no items available for chosen category</h3>
         )}
       </section>
     </>

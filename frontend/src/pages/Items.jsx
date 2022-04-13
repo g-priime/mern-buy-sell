@@ -39,7 +39,6 @@ function Items() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user && user.name}</h1>
         <p>Buy Sell Items</p>
       </section>
 

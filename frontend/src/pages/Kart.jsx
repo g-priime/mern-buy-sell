@@ -42,7 +42,6 @@ function Kart() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user && user.name}</h1>
         <p>Buy Sell Kart</p>
       </section>
 
