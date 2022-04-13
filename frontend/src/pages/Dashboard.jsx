@@ -47,7 +47,7 @@ function Dashboard() {
       </section>
 
       <SearchForm />
-      {cat}
+      {cat ? (<>Results for: {cat}</>) : (<>All items</>)}
 
       <section className="content">
         {items.length > 0 ? (

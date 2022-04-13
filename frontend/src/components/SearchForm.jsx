@@ -12,9 +12,11 @@ function ItemForm() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(getCategoryItems(category));
-    setCategory(category);
-
+    if(category && category !== "None selected"){
+      dispatch(getCategoryItems(category));
+    } else {
+      dispatch(getAvailableItems())
+    }
   };
 
   return (
