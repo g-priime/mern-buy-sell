@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import UpdateItemForm from "../components/UpdateItemForm";
-import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import { getItemById, reset } from "../features/items/itemSlice";
 
@@ -11,19 +10,9 @@ function UpdateFormPage() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { items, isLoading, isError, message } = useSelector(
+  const { items, isLoading, isError, message, id } = useSelector(
     (state) => state.items
   );
-
-  const [text, setText] = useState("text");
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-
-  const fillInForm = (item) => {
-    setText("update");
-    console.log(text);
-  };
 
   useEffect(() => {
     if (isError) {
@@ -34,7 +23,7 @@ function UpdateFormPage() {
       navigate("/login");
     }
 
-    dispatch(getItemById(items._id))
+    dispatch(getItemById(id))
 
     return () => {
       dispatch(reset());
