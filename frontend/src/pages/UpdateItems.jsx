@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import UpdateItemForm from "../components/UpdateItemForm";
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getItems, reset } from "../features/items/itemSlice";
+import { getItemById, getItems, reset } from "../features/items/itemSlice";
 
 function UpdateItems() {
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ function UpdateItems() {
   const fillInForm = (item) => {
     setText("update")
     console.log(text)
+    dispatch(getItemById(item._id))
     navigate("/updateForm");
   }
 

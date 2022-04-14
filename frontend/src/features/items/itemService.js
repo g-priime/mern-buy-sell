@@ -60,6 +60,19 @@ const removeBuyerFromItem = async (itemId, token) => {
   return response.data;
 };
 
+// Get single item by item ID
+const getItemById = async (itemId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(API_URL + itemId, config);
+
+  return response.data;
+};
+
 // Get user items
 const getItems = async (token) => {
   const config = {
@@ -143,6 +156,7 @@ const itemService = {
   updateItem,
   addBuyerToItem,
   removeBuyerFromItem,
+  getItemById,
   getItems,
   getKartItems,
   getAvailableItems,

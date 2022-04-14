@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateItem } from "../features/items/itemSlice";
 
-function UpdateItemForm({ updateText }) {
-  const [text, setText] = useState(updateText);
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("Kitchen");//adds default value to category selection
-  const [description, setDescription] = useState("");
+function UpdateItemForm({ oldText, oldPrice, oldCategory, oldDescription }) {
+  const [text, setText] = useState(oldText);
+  const [price, setPrice] = useState(oldPrice);
+  const [category, setCategory] = useState(oldCategory);//adds default value to category selection
+  const [description, setDescription] = useState(oldDescription);
   const dispatch = useDispatch();
 
   let showError = false;

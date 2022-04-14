@@ -86,6 +86,25 @@ export const removeBuyerFromItem = createAsyncThunk(
   }
 );
 
+// Get item by item id
+export const getItemById = createAsyncThunk(
+  "items/getById",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await itemService.getItemById(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Get user items
 export const getItems = createAsyncThunk(
   "items/get",
@@ -232,6 +251,19 @@ export const itemSlice = createSlice({
         );
       })
       .addCase(updateItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getItemById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getItemById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.items = action.payload;
+      })
+      .addCase(getItemById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

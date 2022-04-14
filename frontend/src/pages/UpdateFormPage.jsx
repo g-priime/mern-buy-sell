@@ -21,9 +21,9 @@ function UpdateFormPage() {
   const [description, setDescription] = useState("");
 
   const fillInForm = (item) => {
-    setText("update")
-    console.log(text)
-  }
+    setText("update");
+    console.log(text);
+  };
 
   useEffect(() => {
     if (isError) {
@@ -52,9 +52,16 @@ function UpdateFormPage() {
         <p>Buy Sell Update Form</p>
       </section>
 
-      <UpdateItemForm
-        updateText={text}
-      />
+      {items.length > 0 ? (
+        <UpdateItemForm
+          oldText={items && items[0].text}
+          oldPrice={items && items[0].price}
+          oldCategory={items && items[0].category}
+          oldDescription={items && items[0].description}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 }
