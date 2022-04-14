@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import UpdateItemForm from "../components/UpdateItemForm";
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import { getItemById, getItems, reset } from "../features/items/itemSlice";
@@ -15,14 +14,7 @@ function UpdateItems() {
     (state) => state.items
   );
 
-  const [text, setText] = useState("text");
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-
   const fillInForm = (item) => {
-    setText("update")
-    console.log(text)
     dispatch(getItemById(item._id))
     navigate("/updateForm");
   }
