@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import UpdateItemForm from "../components/UpdateItemForm";
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getItems, reset } from "../features/items/itemSlice";
+import { getItemById, reset } from "../features/items/itemSlice";
 
 function UpdateFormPage() {
   const navigate = useNavigate();
@@ -34,8 +34,7 @@ function UpdateFormPage() {
       navigate("/login");
     }
 
-    // Get items posted by currently logged in user only
-    dispatch(getItems());
+    dispatch(getItemById(items._id))
 
     return () => {
       dispatch(reset());
@@ -52,12 +51,12 @@ function UpdateFormPage() {
         <p>Buy Sell Update Form</p>
       </section>
 
-      {items.length > 0 ? (
+      {items ? (
         <UpdateItemForm
-          oldText={items && items[0].text}
-          oldPrice={items && items[0].price}
-          oldCategory={items && items[0].category}
-          oldDescription={items && items[0].description}
+          oldText={items && items.text}
+          oldPrice={items && items.price}
+          oldCategory={items && items.category}
+          oldDescription={items && items.description}
         />
       ) : (
         <></>
