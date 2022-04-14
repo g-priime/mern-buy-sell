@@ -15,6 +15,19 @@ const createItem = async (itemData, token) => {
   return response.data;
 };
 
+// Update item
+const updateItem = async (itemId, itemData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(API_URL + itemId, itemData, config);
+
+  return response.data;
+};
+
 // Add buyer attribute to item
 const addBuyerToItem = async (itemId, token) => {
   // Won't let me send without this data, so set to empty object - to be fixed later
@@ -127,6 +140,7 @@ const deleteItem = async (itemId, token) => {
 
 const itemService = {
   createItem,
+  updateItem,
   addBuyerToItem,
   removeBuyerFromItem,
   getItems,
