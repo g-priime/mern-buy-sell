@@ -9,6 +9,7 @@ import Items from './pages/Items'
 import Kart from './pages/Kart'
 import Checkout from "./pages/Checkout";
 import UpdateItems from "./pages/UpdateItems";
+import UpdateFormPage from "./pages/UpdateFormPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/items" element={<Items />} />
             <Route path="/update" element={<UpdateItems />} />
+            <Route path="/updateForm" element={<UpdateFormPage />} />
             <Route path="/kart" element={<Kart />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>

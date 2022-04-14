@@ -6,7 +6,7 @@ import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import { getItems, reset } from "../features/items/itemSlice";
 
-function UpdateItems() {
+function UpdateFormPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -23,7 +23,6 @@ function UpdateItems() {
   const fillInForm = (item) => {
     setText("update")
     console.log(text)
-    navigate("/updateForm");
   }
 
   useEffect(() => {
@@ -50,33 +49,14 @@ function UpdateItems() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Update Items</p>
+        <p>Buy Sell Update Form</p>
       </section>
 
-      <section className="content">
-        {items.length > 0 ? (
-          <div className="items">
-            {items.map((item) => (
-              <ItemCard
-                key={item._id}
-                item={item}
-                itemButton={
-                  <button
-                    className="btn"
-                    onClick={() => fillInForm(item)}
-                  >
-                    Update Item
-                  </button>
-                }
-              />
-            ))}
-          </div>
-        ) : (
-          <h3>You have not added any items to sell</h3>
-        )}
-      </section>
+      <UpdateItemForm
+        updateText={text}
+      />
     </>
   );
 }
 
-export default UpdateItems;
+export default UpdateFormPage;
