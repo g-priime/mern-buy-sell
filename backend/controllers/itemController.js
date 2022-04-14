@@ -3,6 +3,15 @@ const asyncHandler = require('express-async-handler')
 const Item = require('../models/itemModel')
 const User = require('../models/userModel')
 
+// @desc    Get item by item id
+// @route   GET /api/items/:id
+// @access  Private
+const getItemById = asyncHandler(async (req, res) => {
+    const item = await Item.findById(req.params.id)
+
+    res.status(200).json(item)
+})
+
 // @desc    Get items posted by currently logged in user
 // @route   GET /api/items
 // @access  Private
@@ -205,6 +214,7 @@ const deleteItem = asyncHandler(async (req, res) => {
 })
 
 module.exports = {
+    getItemById,
     getItems,
     getKartItems,
     getAvailableItems,
