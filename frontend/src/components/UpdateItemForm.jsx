@@ -46,7 +46,7 @@ function UpdateItemForm({
             name="text"
             id="text"
             value={text}
-            onChange={(e) => setText(e.target.value || items.text)}
+            onChange={(e) => setText(e.target.value)}
             required
           />
         </div>
