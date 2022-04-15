@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateItem, createItem, addBuyerToItem } from "../features/items/itemSlice";
-import { useNavigate } from "react-router-dom";
+import { updateItem } from "../features/items/itemSlice";
 
 function UpdateItemForm({ id, oldText, oldPrice, oldCategory, oldDescription }) {
   const [_id] = useState(id);
@@ -10,7 +9,6 @@ function UpdateItemForm({ id, oldText, oldPrice, oldCategory, oldDescription }) 
   const [category, setCategory] = useState(oldCategory);//adds default value to category selection
   const [description, setDescription] = useState(oldDescription);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   let showError = false;
 
