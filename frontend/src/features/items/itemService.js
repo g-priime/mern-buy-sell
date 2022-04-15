@@ -16,14 +16,16 @@ const createItem = async (itemData, token) => {
 };
 
 // Update item
-const updateItem = async (itemId, itemData, token) => {
+const updateItem = async (itemData, token) => {
+  
+
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await axios.put(API_URL + itemId, itemData, config);
+  const response = await axios.put(API_URL + "update/" + itemData._id, itemData, config);
 
   return response.data;
 };

@@ -1,24 +1,28 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateItem } from "../features/items/itemSlice";
+import { updateItem, createItem, addBuyerToItem } from "../features/items/itemSlice";
+import { useNavigate } from "react-router-dom";
 
-function UpdateItemForm({ oldText, oldPrice, oldCategory, oldDescription }) {
+function UpdateItemForm({ id, oldText, oldPrice, oldCategory, oldDescription }) {
+  const [_id] = useState(id);
   const [text, setText] = useState(oldText);
   const [price, setPrice] = useState(oldPrice);
   const [category, setCategory] = useState(oldCategory);//adds default value to category selection
   const [description, setDescription] = useState(oldDescription);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   let showError = false;
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-      dispatch(updateItem({ text, price, category, description }));
+      dispatch(updateItem({_id, text, price, category, description}));
       setText("");
       setPrice("");
       setCategory("");
       setDescription("");
+
   };
 
   return (

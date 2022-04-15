@@ -94,7 +94,7 @@ const setItem = asyncHandler(async (req, res) => {
 })
 
 // @desc    Update item
-// @route   PUT /api/items/:id
+// @route   PUT /api/items/update/:id
 // @access  Private
 const updateItem = asyncHandler(async (req, res) => {
     const item = await Item.findById(req.params.id)

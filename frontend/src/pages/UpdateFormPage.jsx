@@ -42,6 +42,7 @@ function UpdateFormPage() {
 
       {items ? (
         <UpdateItemForm
+          id={items && items._id}
           oldText={items && items.text}
           oldPrice={items && items.price}
           oldCategory={items && items.category}

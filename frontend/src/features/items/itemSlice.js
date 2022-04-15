@@ -33,10 +33,10 @@ export const createItem = createAsyncThunk(
 // Update item
 export const updateItem = createAsyncThunk(
   "items/update",
-  async (id, itemData, thunkAPI) => {
+  async (itemData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await itemService.addBuyerToItem(id, itemData, token);
+      return await itemService.updateItem(itemData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -241,21 +241,6 @@ export const itemSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(updateItem.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateItem.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.items = state.items.filter(
-          (item) => item._id !== action.payload._id
-        );
-      })
-      .addCase(updateItem.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
       .addCase(getItemById.pending, (state) => {
         state.isLoading = true;
       })
@@ -348,6 +333,21 @@ export const itemSlice = createSlice({
         );
       })
       .addCase(deleteItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.items = state.items.filter(
+          (item) => item._id !== action.payload._id
+        );
+      })
+      .addCase(updateItem.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
