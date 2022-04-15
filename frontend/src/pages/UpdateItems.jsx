@@ -14,8 +14,9 @@ function UpdateItems() {
     (state) => state.items
   );
 
-  const fillInForm = (item) => {
-    dispatch(getItemById(item._id))
+  const fillInForm = async (item) => {
+
+    await dispatch(getItemById(item._id))
     navigate("/updateForm");
   }
 

@@ -23,7 +23,7 @@ function UpdateFormPage() {
       navigate("/login");
     }
 
-    dispatch(getItemById(id))
+
 
     return () => {
       dispatch(reset());

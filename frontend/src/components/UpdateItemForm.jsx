@@ -1,24 +1,28 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateItem } from "../features/items/itemSlice";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updateItem, getItemById } from "../features/items/itemSlice";
 
 function UpdateItemForm({
-  id,
+
   oldText,
   oldPrice,
   oldCategory,
   oldDescription,
 }) {
-  const [_id] = useState(id);
-  const [text, setText] = useState(oldText);
-  const [price, setPrice] = useState(oldPrice);
-  const [category, setCategory] = useState(oldCategory); //adds default value to category selection
-  const [description, setDescription] = useState(oldDescription);
+  const { items, isLoading, isError, message, id } = useSelector(
+    (state) => state.items
+  );
+
+  const [_id] = useState(items._id);
+  const [text, setText] = useState(items.text);
+  const [price, setPrice] = useState(items.price);
+  const [category, setCategory] = useState(items.category); //adds default value to category selection
+  const [description, setDescription] = useState(items.description);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   let showError = false;
+
+  
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +32,7 @@ function UpdateItemForm({
     setPrice("");
     setCategory("");
     setDescription("");
-    navigate("/update");
+
   };
 
   return (
@@ -42,7 +46,7 @@ function UpdateItemForm({
             name="text"
             id="text"
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => setText(e.target.value || items.text)}
             required
           />
         </div>
