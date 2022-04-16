@@ -1,25 +1,27 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateItem } from "../features/items/itemSlice";
+import { updateItem, reset } from "../features/items/itemSlice";
 
 function UpdateItemForm() {
-  const { items } = useSelector((state) => state.items);
+  const { item } = useSelector((state) => state.items);
 
-  const [_id] = useState(items._id);
-  const [text, setText] = useState(items.text);
-  const [price, setPrice] = useState(items.price);
-  const [category, setCategory] = useState(items.category); 
-  const [description, setDescription] = useState(items.description);
+  const [_id] = useState(item._id);
+  const [text, setText] = useState(item.text);
+  const [price, setPrice] = useState(item.price);
+  const [category, setCategory] = useState(item.category); 
+  const [description, setDescription] = useState(item.description);
   const dispatch = useDispatch();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
+    dispatch(reset());
     dispatch(updateItem({ _id, text, price, category, description }));
     setText("");
     setPrice("");
     setCategory("");
     setDescription("");
+    
   };
 
   return (

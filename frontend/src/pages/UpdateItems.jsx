@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { getItemById, getItems, reset } from "../features/items/itemSlice";
+import { getItemById, getItems } from "../features/items/itemSlice";
 
 function UpdateItems() {
   const navigate = useNavigate();
@@ -31,9 +31,7 @@ function UpdateItems() {
     // Get items posted by currently logged in user only
     dispatch(getItems());
 
-    return () => {
-      dispatch(reset());
-    };
+
   }, [user, navigate, isError, message, dispatch]);
 
   if (isLoading) {

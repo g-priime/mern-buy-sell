@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import UpdateItemForm from "../components/UpdateItemForm";
+import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import { reset } from "../features/items/itemSlice";
 
@@ -10,9 +11,10 @@ function UpdateFormPage() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { items, isLoading, isError, message } = useSelector(
+  const { items, isLoading, isError, message, item } = useSelector(
     (state) => state.items
   );
+
 
   useEffect(() => {
     if (isError) {
@@ -39,6 +41,16 @@ function UpdateFormPage() {
       </section>
 
       {items ? <UpdateItemForm /> : <></>}
+
+      <section className="content">
+        {items ? (
+          <div className="items">
+            <ItemCard key={item._id} item={item} />
+          </div>
+        ) : (
+          <h3>You have not selected an item to update</h3>
+        )}
+      </section>
     </>
   );
 }
