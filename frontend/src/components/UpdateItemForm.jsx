@@ -1,17 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateItem, getItemById } from "../features/items/itemSlice";
+import { updateItem } from "../features/items/itemSlice";
 
-function UpdateItemForm({
-
-  oldText,
-  oldPrice,
-  oldCategory,
-  oldDescription,
-}) {
-  const { items, isLoading, isError, message, id } = useSelector(
-    (state) => state.items
-  );
+function UpdateItemForm() {
+  const { items } = useSelector((state) => state.items);
 
   const [_id] = useState(items._id);
   const [text, setText] = useState(items.text);
@@ -22,8 +14,6 @@ function UpdateItemForm({
 
   let showError = false;
 
-  
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -32,7 +22,6 @@ function UpdateItemForm({
     setPrice("");
     setCategory("");
     setDescription("");
-
   };
 
   return (

@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import UpdateItemForm from "../components/UpdateItemForm";
 import Spinner from "../components/Spinner";
-import { getItemById, reset } from "../features/items/itemSlice";
+import { reset } from "../features/items/itemSlice";
 
 function UpdateFormPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { items, isLoading, isError, message, id } = useSelector(
+  const { items, isLoading, isError, message } = useSelector(
     (state) => state.items
   );
 
@@ -22,8 +22,6 @@ function UpdateFormPage() {
     if (!user) {
       navigate("/login");
     }
-
-
 
     return () => {
       dispatch(reset());

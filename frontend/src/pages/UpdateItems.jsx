@@ -15,10 +15,9 @@ function UpdateItems() {
   );
 
   const fillInForm = async (item) => {
-
-    await dispatch(getItemById(item._id))
+    await dispatch(getItemById(item._id));
     navigate("/updateForm");
-  }
+  };
 
   useEffect(() => {
     if (isError) {
@@ -55,10 +54,7 @@ function UpdateItems() {
                 key={item._id}
                 item={item}
                 itemButton={
-                  <button
-                    className="btn"
-                    onClick={() => fillInForm(item)}
-                  >
+                  <button className="btn" onClick={() => fillInForm(item)}>
                     Update Item
                   </button>
                 }
