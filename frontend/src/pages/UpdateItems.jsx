@@ -62,7 +62,7 @@ function UpdateItems() {
             ))}
           </div>
         ) : (
-          <h3>You have not added any items to sell</h3>
+          <h3>You have no items to update</h3>
         )}
       </section>
     </>

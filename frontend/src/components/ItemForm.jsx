@@ -9,8 +9,6 @@ function ItemForm() {
   const [description, setDescription] = useState("");
   const dispatch = useDispatch();
 
-  let showError = false;
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -23,7 +21,6 @@ function ItemForm() {
 
   return (
     <section className="form">
-      {showError ? (<>Please select a category</>) : (<></>)}
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="text">Item</label>

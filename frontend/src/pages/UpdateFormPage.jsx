@@ -38,17 +38,7 @@ function UpdateFormPage() {
         <p>Buy Sell Update Form</p>
       </section>
 
-      {items ? (
-        <UpdateItemForm
-          id={items && items._id}
-          oldText={items && items.text}
-          oldPrice={items && items.price}
-          oldCategory={items && items.category}
-          oldDescription={items && items.description}
-        />
-      ) : (
-        <></>
-      )}
+      {items ? <UpdateItemForm /> : <></>}
     </>
   );
 }

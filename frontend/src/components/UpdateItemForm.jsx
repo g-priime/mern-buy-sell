@@ -8,11 +8,9 @@ function UpdateItemForm() {
   const [_id] = useState(items._id);
   const [text, setText] = useState(items.text);
   const [price, setPrice] = useState(items.price);
-  const [category, setCategory] = useState(items.category); //adds default value to category selection
+  const [category, setCategory] = useState(items.category); 
   const [description, setDescription] = useState(items.description);
   const dispatch = useDispatch();
-
-  let showError = false;
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +24,6 @@ function UpdateItemForm() {
 
   return (
     <section className="form">
-      {showError ? <>Please select a category</> : <></>}
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="text">Item</label>
