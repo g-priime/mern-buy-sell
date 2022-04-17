@@ -15,7 +15,6 @@ function UpdateFormPage() {
     (state) => state.items
   );
 
-
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -45,7 +44,11 @@ function UpdateFormPage() {
       <section className="content">
         {items ? (
           <div className="items">
-            <ItemCard key={item._id} item={item} />
+            <ItemCard
+              key={item._id}
+              item={item}
+              itemButton={<button type="button" className="item-btn-hidden"></button>}
+            />
           </div>
         ) : (
           <h3>You have not selected an item to update</h3>

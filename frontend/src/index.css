@@ -143,6 +143,10 @@ h3 {
   margin-top: 20px;
 }
 
+.item-btn-hidden {
+  visibility: hidden;
+}
+
 .form,
 .content {
   width: 70%;
