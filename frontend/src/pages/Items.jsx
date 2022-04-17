@@ -45,6 +45,9 @@ function Items() {
       <ItemForm />
 
       <section className="content">
+        <div>
+          {items.length > 0 ? <>Your Items</> : <></>}
+        </div>
         {items.length > 0 ? (
           <div className="items">
             {items.map((item) => (

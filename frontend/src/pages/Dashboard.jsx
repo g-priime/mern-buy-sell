@@ -49,7 +49,7 @@ function Dashboard() {
       <SearchForm />
 
       <section className="content">
-        <div className="category-heading">
+        <div>
           {cat ? <>Results for: {cat}</> : <>All items</>}
         </div>
         {items.length > 0 ? (
