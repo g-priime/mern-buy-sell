@@ -5,18 +5,18 @@ import { createItem } from "../features/items/itemSlice";
 function ItemForm() {
   const [text, setText] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("Furniture");//adds default value to category selection
+  const [category, setCategory] = useState("Furniture"); //adds default value to category selection
   const [description, setDescription] = useState("");
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-      dispatch(createItem({ text, price, category, description }));
-      setText("");
-      setPrice("");
-      setCategory("");
-      setDescription("");
+    dispatch(createItem({ text, price, category, description }));
+    setText("");
+    setPrice("");
+    setCategory("");
+    setDescription("");
   };
 
   return (
@@ -55,11 +55,11 @@ function ItemForm() {
             required
           >
             <option disabled>Select category...</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Electronics">Electronics</option>
             <option value="Appliances">Appliances</option>
             <option value="Automotive">Automotive</option>
             <option value="Clothing">Clothing</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
             <option value="Sporting goods">Sporting goods</option>
             <option value="Miscellaneous">Miscellaneos</option>
           </select>

@@ -60,11 +60,11 @@ function UpdateItemForm() {
             required
           >
             <option disabled>Select category...</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Electronics">Electronics</option>
             <option value="Appliances">Appliances</option>
             <option value="Automotive">Automotive</option>
             <option value="Clothing">Clothing</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
             <option value="Sporting goods">Sporting goods</option>
             <option value="Miscellaneous">Miscellaneos</option>
           </select>
