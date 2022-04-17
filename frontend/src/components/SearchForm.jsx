@@ -12,10 +12,10 @@ function ItemForm() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if(category && category !== "None selected"){
+    if (category && category !== "None selected") {
       dispatch(getCategoryItems(category));
     } else {
-      dispatch(getAvailableItems())
+      dispatch(getAvailableItems());
     }
   };
 
@@ -32,10 +32,14 @@ function ItemForm() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-                <option defaultValue>None selected</option>
-                <option value="Kitchen">Kitchen</option>
-                <option value="Bedroom">Bedroom</option>
-                <option value="Living Room">Living Room</option>
+              <option defaultValue>None selected</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Appliances">Appliances</option>
+              <option value="Automotive">Automotive</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Sporting goods">Sporting goods</option>
+              <option value="Miscellaneous">Miscellaneos</option>
             </select>
           </div>
           <div className="form-group search-buttons">
