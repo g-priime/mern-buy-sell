@@ -23,19 +23,13 @@ function Header() {
         {user ? (
           <>
             <li>
-              <Link to="/kart">
-                <FaUser /> Kart
-              </Link>
+              <Link to="/kart">Kart</Link>
             </li>
             <li>
-              <Link to="/items">
-                <FaUser /> Items
-              </Link>
+              <Link to="/items">Items</Link>
             </li>
             <li>
-              <Link to="/update">
-                <FaUser /> Update Items
-              </Link>
+              <Link to="/update">Update Items</Link>
             </li>
             <li>
               <button className="btn" onClick={onLogout}>
