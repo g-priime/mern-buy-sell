@@ -19,6 +19,8 @@ function Dashboard() {
     (state) => state.items
   );
 
+  let displayItems = items.slice();
+
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -54,7 +56,7 @@ function Dashboard() {
         </div>
         {items.length > 0 ? (
           <div className="items">
-            {items.map((item) => (
+            {displayItems.reverse().map((item) => (
               <ItemCard
                 key={item._id}
                 item={item}

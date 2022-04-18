@@ -14,6 +14,11 @@ function UpdateItems() {
     (state) => state.items
   );
 
+  let displayItems
+  if(items.length > 0) {
+    displayItems = items.slice();
+  }
+
   const fillInForm = async (item) => {
     await dispatch(getItemById(item._id));
     navigate("/updateForm");
@@ -47,7 +52,7 @@ function UpdateItems() {
       <section className="content">
         {items.length > 0 ? (
           <div className="items">
-            {items.map((item) => (
+            {displayItems.reverse().map((item) => (
               <ItemCard
                 key={item._id}
                 item={item}
