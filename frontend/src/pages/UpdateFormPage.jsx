@@ -11,7 +11,7 @@ function UpdateFormPage() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { items, isLoading, isError, message, item } = useSelector(
+  const { items, isLoading, isError, message, item, update } = useSelector(
     (state) => state.items
   );
 
@@ -24,10 +24,14 @@ function UpdateFormPage() {
       navigate("/login");
     }
 
+    if (!update) {
+      navigate("/update");
+    }
+
     return () => {
       dispatch(reset());
     };
-  }, [user, navigate, isError, message, dispatch]);
+  }, [user, navigate, isError, message, dispatch, update]);
 
   if (isLoading) {
     return <Spinner />;

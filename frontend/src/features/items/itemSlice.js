@@ -9,6 +9,7 @@ const initialState = {
   message: "",
   cat: "",
   item: {},
+  update: false,
 };
 
 // create new item
@@ -249,6 +250,7 @@ export const itemSlice = createSlice({
         state.isSuccess = true;
         state.items = action.payload;
         state.item = action.payload;
+        state.update = true;
       })
       .addCase(getItemById.rejected, (state, action) => {
         state.isLoading = false;
@@ -339,6 +341,7 @@ export const itemSlice = createSlice({
       })
       .addCase(updateItem.pending, (state) => {
         state.isLoading = true;
+        state.update = true;
       })
       .addCase(updateItem.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -346,7 +349,7 @@ export const itemSlice = createSlice({
         state.items = state.items.filter(
           (item) => item._id !== action.payload._id
         );
-        state.item = action.payload;
+        state.item = action.payload; 
       })
       .addCase(updateItem.rejected, (state, action) => {
         state.isLoading = false;
