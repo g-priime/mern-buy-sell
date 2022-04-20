@@ -15,7 +15,10 @@ function AddItems() {
     (state) => state.items
   );
 
-  let displayItems = items.slice();
+  let displayItems;
+  if(items.length > 0){
+    displayItems = items.slice();
+  }
 
   useEffect(() => {
     if (isError) {
