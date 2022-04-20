@@ -6,7 +6,7 @@ import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import { getItems, reset, deleteItem } from "../features/items/itemSlice";
 
-function Items() {
+function AddItems() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -41,7 +41,7 @@ function Items() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Items</p>
+        <p>Buy Sell Add Items</p>
       </section>
 
       <ItemForm />
@@ -75,4 +75,4 @@ function Items() {
   );
 }
 
-export default Items;
+export default AddItems;

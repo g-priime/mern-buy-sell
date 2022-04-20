@@ -26,7 +26,7 @@ function Header() {
               <Link to="/kart">Kart</Link>
             </li>
             <li>
-              <Link to="/items">Items</Link>
+              <Link to="/add">Add Items</Link>
             </li>
             <li>
               <Link to="/update">Update Items</Link>
