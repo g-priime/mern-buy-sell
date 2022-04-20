@@ -5,7 +5,7 @@ import { createItem } from "../features/items/itemSlice";
 function ItemForm() {
   const [text, setText] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("Furniture"); //adds default value to category selection
+  const [category, setCategory] = useState("Appliances"); //adds default value to category selection
   const [description, setDescription] = useState("");
   const dispatch = useDispatch();
 
