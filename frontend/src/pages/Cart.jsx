@@ -10,7 +10,7 @@ import {
   removeBuyerFromItem,
 } from "../features/items/itemSlice";
 
-function Kart() {
+function Cart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -47,7 +47,7 @@ function Kart() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Kart</p>
+        <p>Buy Sell Cart</p>
       </section>
 
       <section className="content">
@@ -62,7 +62,7 @@ function Kart() {
                     className="btn"
                     onClick={() => dispatch(removeBuyerFromItem(item._id))}
                   >
-                    Remove from kart
+                    Remove from cart
                   </button>
                 }
               />
@@ -89,4 +89,4 @@ function Kart() {
   );
 }
 
-export default Kart;
+export default Cart;

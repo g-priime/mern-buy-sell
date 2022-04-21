@@ -6,7 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AddItems from './pages/AddItems'
-import Kart from './pages/Kart'
+import Cart from './pages/Cart'
 import Checkout from "./pages/Checkout";
 import UpdateItems from "./pages/UpdateItems";
 import UpdateFormPage from "./pages/UpdateFormPage";
@@ -24,7 +24,7 @@ function App() {
             <Route path="/add" element={<AddItems />} />
             <Route path="/update" element={<UpdateItems />} />
             <Route path="/updateForm" element={<UpdateFormPage />} />
-            <Route path="/kart" element={<Kart />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </div>

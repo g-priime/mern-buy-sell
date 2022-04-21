@@ -23,7 +23,7 @@ function Header() {
         {user ? (
           <>
             <li>
-              <Link to="/kart">Kart</Link>
+              <Link to="/cart">Cart</Link>
             </li>
             <li>
               <Link to="/add">Add Items</Link>
