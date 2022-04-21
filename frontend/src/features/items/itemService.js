@@ -88,8 +88,8 @@ const getItems = async (token) => {
   return response.data;
 };
 
-// Get items for kart of currently logged in user
-const getKartItems = async (token) => {
+// Get items for cart of currently logged in user
+const getCartItems = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -160,7 +160,7 @@ const itemService = {
   removeBuyerFromItem,
   getItemById,
   getItems,
-  getKartItems,
+  getCartItems,
   getAvailableItems,
   getCategoryItems,
   getAllItems,

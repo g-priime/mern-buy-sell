@@ -126,13 +126,13 @@ export const getItems = createAsyncThunk(
   }
 );
 
-// Get items for kart of currently logged in user
-export const getKartItems = createAsyncThunk(
-  "items/getKart",
+// Get items for cart of currently logged in user
+export const getCartItems = createAsyncThunk(
+  "items/getCart",
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await itemService.getKartItems(token);
+      return await itemService.getCartItems(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -270,15 +270,15 @@ export const itemSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(getKartItems.pending, (state) => {
+      .addCase(getCartItems.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getKartItems.fulfilled, (state, action) => {
+      .addCase(getCartItems.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.items = action.payload;
       })
-      .addCase(getKartItems.rejected, (state, action) => {
+      .addCase(getCartItems.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

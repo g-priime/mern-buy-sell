@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import {
-  getKartItems,
+  getCartItems,
   reset,
   removeBuyerFromItem,
 } from "../features/items/itemSlice";
@@ -33,7 +33,7 @@ function Cart() {
       navigate("/login");
     }
 
-    dispatch(getKartItems());
+    dispatch(getCartItems());
 
     return () => {
       dispatch(reset());
@@ -69,7 +69,7 @@ function Cart() {
             ))}
           </div>
         ) : (
-          <h3>You have not added any items to your kart</h3>
+          <h3>You have not added any items to your cart</h3>
         )}
       </section>
 
