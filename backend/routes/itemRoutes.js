@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {
   getItems,
-  getKartItems,
+  getCartItems,
   getAvailableItems,
   getCategoryItems,
   getAllItems,
@@ -17,7 +17,7 @@ const {
 const {protect} = require('../middleware/authMiddleware')
 
 router.route('/').get(protect, getItems).post(protect, setItem)
-router.route('/kart').get(protect, getKartItems)
+router.route('/cart').get(protect, getCartItems)
 router.route('/available').get(protect, getAvailableItems)
 router.route('/category/:id').get(protect, getCategoryItems)
 router.route('/all').get(protect, getAllItems)

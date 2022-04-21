@@ -96,7 +96,7 @@ const getCartItems = async (token) => {
     },
   };
 
-  const response = await axios.get(API_URL + "kart", config);
+  const response = await axios.get(API_URL + "cart", config);
 
   return response.data;
 };
