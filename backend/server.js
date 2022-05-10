@@ -9,9 +9,12 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 const app = express();
+const multer  = require('multer')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(multer({ dest: 'uploads/' }).single('avatar'));
+//app.use(multer());
 
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/categories", require("./routes/categoryRoutes"));
