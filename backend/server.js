@@ -13,8 +13,7 @@ const multer  = require('multer')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(multer({ dest: 'uploads/' }).single('avatar'));
-//app.use(multer());
+app.use(multer({ dest: 'uploads/' }).single('image'));
 
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/categories", require("./routes/categoryRoutes"));
