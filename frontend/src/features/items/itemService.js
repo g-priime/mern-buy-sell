@@ -1,16 +1,24 @@
 import axios from "axios";
 
 const API_URL = "/api/items/";
+var bodyFormData = new FormData();
 
 // create new item
 const createItem = async (itemData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
     },
   };
 
-  const response = await axios.post(API_URL, itemData, config);
+  bodyFormData.append('text', itemData.text);
+  bodyFormData.append('price', itemData.price);
+  bodyFormData.append('category', itemData.category);
+  bodyFormData.append('description', itemData.description);
+  bodyFormData.append('image', itemData.image);
+
+  const response = await axios.post(API_URL, bodyFormData, config);
 
   return response.data;
 };
