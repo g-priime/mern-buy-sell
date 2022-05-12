@@ -123,7 +123,14 @@ const updateItem = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
 
-  const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
+  const updatedItem = await Item.findByIdAndUpdate(req.params.id, {
+    text: req.body.text,
+    price: req.body.price,
+    description: req.body.description,
+    category: req.body.category,
+    user: req.user.id,
+    username: req.user.name,
+    img: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
     new: true,
   });
 

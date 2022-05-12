@@ -12,6 +12,23 @@ function UpdateItemForm() {
   const [description, setDescription] = useState(item.description);
   const dispatch = useDispatch();
 
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState(null);
+  const types = ["image/png", "image/jpeg"];
+
+  const changeHandler = (e) => {
+    let selected = e.target.files[0];
+
+    if (selected && types.includes(selected.type)) {
+      setFile(selected);
+      
+      setError("");
+    } else {
+      setFile(null);
+      setError("Please select an image file (png or jpeg)");
+    }
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -80,6 +97,13 @@ function UpdateItemForm() {
             required
           />
         </div>
+
+        <div className="form-group">
+          <input type="file" name="image" id="image" onChange={changeHandler} />
+        </div>
+        {file && <div className="file-name">{file.name}</div>}
+        {error && <div className="error">{error}</div>}
+
         <div className="form-group">
           <button className="btn btn-block" type="submit">
             Update Item
