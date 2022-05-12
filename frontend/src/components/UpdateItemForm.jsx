@@ -33,7 +33,7 @@ function UpdateItemForm() {
     e.preventDefault();
 
     dispatch(reset());
-    dispatch(updateItem({ _id, text, price, category, description }));
+    dispatch(updateItem({ _id, text, price, category, description, image: file }));
     setText("");
     setPrice("");
     setCategory("");

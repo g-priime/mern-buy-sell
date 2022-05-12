@@ -25,15 +25,20 @@ const createItem = async (itemData, token) => {
 
 // Update item
 const updateItem = async (itemData, token) => {
-  
-
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
     },
   };
+console.log("service")
+  bodyFormData.append('text', itemData.text);
+  bodyFormData.append('price', itemData.price);
+  bodyFormData.append('category', itemData.category);
+  bodyFormData.append('description', itemData.description);
+  bodyFormData.append('image', itemData.image);
 
-  const response = await axios.put(API_URL + "update/" + itemData._id, itemData, config);
+  const response = await axios.put(API_URL + "update/" + itemData._id, bodyFormData, config);
 
   return response.data;
 };
