@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const API_URL = "/api/items/";
-var bodyFormData = new FormData();
 
 // create new item
 const createItem = async (itemData, token) => {
@@ -12,6 +11,7 @@ const createItem = async (itemData, token) => {
     },
   };
 
+  var bodyFormData = new FormData();
   bodyFormData.append('text', itemData.text);
   bodyFormData.append('price', itemData.price);
   bodyFormData.append('category', itemData.category);
@@ -31,7 +31,8 @@ const updateItem = async (itemData, token) => {
       "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
     },
   };
-console.log("service")
+
+  var bodyFormData = new FormData();
   bodyFormData.append('text', itemData.text);
   bodyFormData.append('price', itemData.price);
   bodyFormData.append('category', itemData.category);
