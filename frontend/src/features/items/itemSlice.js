@@ -242,6 +242,23 @@ export const itemSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      .addCase(updateItem.pending, (state) => {
+        state.isLoading = true;
+        state.update = true;
+      })
+      .addCase(updateItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.items = state.items.filter(
+          (item) => item._id !== action.payload._id
+        );
+        state.item = action.payload; 
+      })
+      .addCase(updateItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(getItemById.pending, (state) => {
         state.isLoading = true;
       })
@@ -335,23 +352,6 @@ export const itemSlice = createSlice({
         );
       })
       .addCase(deleteItem.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(updateItem.pending, (state) => {
-        state.isLoading = true;
-        state.update = true;
-      })
-      .addCase(updateItem.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.items = state.items.filter(
-          (item) => item._id !== action.payload._id
-        );
-        state.item = action.payload; 
-      })
-      .addCase(updateItem.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
