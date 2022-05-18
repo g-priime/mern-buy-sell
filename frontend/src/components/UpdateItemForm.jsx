@@ -8,7 +8,7 @@ function UpdateItemForm() {
   const [_id] = useState(item._id);
   const [text, setText] = useState(item.text);
   const [price, setPrice] = useState(item.price);
-  const [category, setCategory] = useState(item.category); 
+  const [category, setCategory] = useState(item.category);
   const [description, setDescription] = useState(item.description);
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ function UpdateItemForm() {
 
     if (selected && types.includes(selected.type)) {
       setFile(selected);
-      
+
       setError("");
     } else {
       setFile(null);
@@ -33,12 +33,13 @@ function UpdateItemForm() {
     e.preventDefault();
 
     dispatch(reset());
-    dispatch(updateItem({ _id, text, price, category, description, image: file }));
+    dispatch(
+      updateItem({ _id, text, price, category, description, image: file })
+    );
     setText("");
     setPrice("");
     setCategory("");
     setDescription("");
-    
   };
 
   return (
@@ -99,7 +100,13 @@ function UpdateItemForm() {
         </div>
 
         <div className="form-group">
-          <input type="file" name="image" id="image" onChange={changeHandler} />
+          <input
+            type="file"
+            name="image"
+            id="image"
+            onChange={changeHandler}
+            required
+          />
         </div>
         {file && <div className="file-name">{file.name}</div>}
         {error && <div className="error">{error}</div>}

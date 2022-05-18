@@ -18,7 +18,7 @@ function ItemForm() {
 
     if (selected && types.includes(selected.type)) {
       setFile(selected);
-      
+
       setError("");
     } else {
       setFile(null);
@@ -94,7 +94,13 @@ function ItemForm() {
         </div>
 
         <div className="form-group">
-          <input type="file" name="image" id="image" onChange={changeHandler} />
+          <input
+            type="file"
+            name="image"
+            id="image"
+            onChange={changeHandler}
+            required
+          />
         </div>
         {file && <div className="file-name">{file.name}</div>}
         {error && <div className="error">{error}</div>}
