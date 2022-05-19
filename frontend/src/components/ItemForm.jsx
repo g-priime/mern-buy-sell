@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createItem } from "../features/items/itemSlice";
+import { FaCameraRetro } from "react-icons/fa";
 
 function ItemForm() {
   const [text, setText] = useState("");
@@ -94,6 +95,11 @@ function ItemForm() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="image" className="image">
+            Picture
+            <FaCameraRetro />
+            {file && <div className="file-name">{file.name}</div>}
+          </label>
           <input
             type="file"
             name="image"
@@ -102,7 +108,6 @@ function ItemForm() {
             required
           />
         </div>
-        {file && <div className="file-name">{file.name}</div>}
         {error && <div className="error">{error}</div>}
 
         <div className="form-group">

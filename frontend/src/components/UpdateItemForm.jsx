@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateItem, reset } from "../features/items/itemSlice";
+import { FaCameraRetro } from "react-icons/fa";
 
 function UpdateItemForm() {
   const { item } = useSelector((state) => state.items);
@@ -100,6 +101,11 @@ function UpdateItemForm() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="image" className="image">
+            Picture
+            <FaCameraRetro />
+            {file && <div className="file-name">{file.name}</div>}
+          </label>
           <input
             type="file"
             name="image"
@@ -108,7 +114,6 @@ function UpdateItemForm() {
             required
           />
         </div>
-        {file && <div className="file-name">{file.name}</div>}
         {error && <div className="error">{error}</div>}
 
         <div className="form-group">
