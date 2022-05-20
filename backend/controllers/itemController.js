@@ -91,7 +91,7 @@ const setItem = asyncHandler(async (req, res) => {
       category: req.body.category,
       user: req.user.id,
       username: req.user.name,
-      img: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
+      image: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
     });
   } catch (error) {
     throw new Error("Please add an image");

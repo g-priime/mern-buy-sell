@@ -20,10 +20,10 @@ function ItemCard({ item, itemButton }) {
           {new Date(item.createdAt).toLocaleString("en-US", options)}
         </p>
         <div>
-          {item && item.img && item.img.data && item.img.data.data ? (
+          {item && item.image && item.image.data && item.image.data.data ? (
             <img
               src={`data:image/jpeg;base64,${arrayBufferToBase64(
-                item.img.data.data
+                item.image.data.data
               )}`}
               alt=""
               className="img"

@@ -34,7 +34,7 @@ const itemSchema = mongoose.Schema(
       required: false,
       ref: "User",
     },
-    img: { data: Buffer, contentType: String },
+    image: { data: Buffer, contentType: String },
   },
   {
     timestamps: true,
