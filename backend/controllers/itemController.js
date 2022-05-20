@@ -82,19 +82,36 @@ const setItem = asyncHandler(async (req, res) => {
     throw new Error("Please add a description");
   }
 
+  console.log(req.file);
+
   let item;
-  try {
-    item = await Item.create({
-      text: req.body.text,
-      price: req.body.price,
-      description: req.body.description,
-      category: req.body.category,
-      user: req.user.id,
-      username: req.user.name,
-      image: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
-    });
-  } catch (error) {
-    throw new Error("Please add an image");
+  if (req.file && req.file.path) {
+    try {
+      item = await Item.create({
+        text: req.body.text,
+        price: req.body.price,
+        description: req.body.description,
+        category: req.body.category,
+        user: req.user.id,
+        username: req.user.name,
+        image: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
+      });
+    } catch (error) {
+      throw new Error("Please add an image");
+    }
+  } else {
+    try {
+      item = await Item.create({
+        text: req.body.text,
+        price: req.body.price,
+        description: req.body.description,
+        category: req.body.category,
+        user: req.user.id,
+        username: req.user.name,
+      });
+    } catch (error) {
+      throw new Error("Please do not add an image");
+    }
   }
 
   res.status(200).json(item);
@@ -132,11 +149,11 @@ const updateItem = asyncHandler(async (req, res) => {
     username: req.user.name,
     img: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
     new: false,
-  })
+  });
 
   const updatedItem = await Item.findById(req.params.id);
 
-  res.status(200).json(updatedItem)
+  res.status(200).json(updatedItem);
 });
 
 // @desc    Adds buyer to item

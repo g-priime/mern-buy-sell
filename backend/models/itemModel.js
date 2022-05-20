@@ -35,6 +35,7 @@ const itemSchema = mongoose.Schema(
       ref: "User",
     },
     image: { data: Buffer, contentType: String },
+    required: false,
   },
   {
     timestamps: true,
