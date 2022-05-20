@@ -105,7 +105,6 @@ function ItemForm() {
             name="image"
             id="image"
             onChange={changeHandler}
-            required
           />
         </div>
         {error && <div className="error">{error}</div>}
