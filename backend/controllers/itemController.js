@@ -82,36 +82,26 @@ const setItem = asyncHandler(async (req, res) => {
     throw new Error("Please add a description");
   }
 
-  console.log(req.file);
-
   let item;
   if (req.file && req.file.path) {
-    try {
-      item = await Item.create({
-        text: req.body.text,
-        price: req.body.price,
-        description: req.body.description,
-        category: req.body.category,
-        user: req.user.id,
-        username: req.user.name,
-        image: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
-      });
-    } catch (error) {
-      throw new Error("Please add an image");
-    }
+    item = await Item.create({
+      text: req.body.text,
+      price: req.body.price,
+      description: req.body.description,
+      category: req.body.category,
+      user: req.user.id,
+      username: req.user.name,
+      image: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
+    });
   } else {
-    try {
-      item = await Item.create({
-        text: req.body.text,
-        price: req.body.price,
-        description: req.body.description,
-        category: req.body.category,
-        user: req.user.id,
-        username: req.user.name,
-      });
-    } catch (error) {
-      throw new Error("Please do not add an image");
-    }
+    item = await Item.create({
+      text: req.body.text,
+      price: req.body.price,
+      description: req.body.description,
+      category: req.body.category,
+      user: req.user.id,
+      username: req.user.name,
+    });
   }
 
   res.status(200).json(item);
@@ -140,16 +130,28 @@ const updateItem = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
 
-  const newItem = await Item.findByIdAndUpdate(req.params.id, {
-    text: req.body.text,
-    price: req.body.price,
-    description: req.body.description,
-    category: req.body.category,
-    user: req.user.id,
-    username: req.user.name,
-    img: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
-    new: false,
-  });
+  if (req.file && req.file.path) {
+    await Item.findByIdAndUpdate(req.params.id, {
+      text: req.body.text,
+      price: req.body.price,
+      description: req.body.description,
+      category: req.body.category,
+      user: req.user.id,
+      username: req.user.name,
+      image: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
+      new: false,
+    });
+  } else {
+    await Item.findByIdAndUpdate(req.params.id, {
+      text: req.body.text,
+      price: req.body.price,
+      description: req.body.description,
+      category: req.body.category,
+      user: req.user.id,
+      username: req.user.name,
+      new: false,
+    });
+  }
 
   const updatedItem = await Item.findById(req.params.id);
 
