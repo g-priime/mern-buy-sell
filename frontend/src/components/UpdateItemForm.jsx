@@ -101,10 +101,9 @@ function UpdateItemForm() {
         </div>
 
         <div className="form-group">
+          <label>Picture</label>
           <label htmlFor="image" className="image">
-            Picture
-            <FaCameraRetro />
-            {file && <div className="file-name">{file.name}</div>}
+            Add Image <FaCameraRetro /> {file && file.name} {error}
           </label>
           <input
             type="file"
@@ -113,7 +112,6 @@ function UpdateItemForm() {
             onChange={changeHandler}
           />
         </div>
-        {error && <div className="error">{error}</div>}
 
         <div className="form-group">
           <button className="btn btn-block" type="submit">
