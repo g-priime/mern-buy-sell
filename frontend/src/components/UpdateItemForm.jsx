@@ -100,17 +100,12 @@ function UpdateItemForm() {
           />
         </div>
 
-        <div className="form-group">
-          <label>Picture</label>
+        <div className="form-group form-group-image">
+          <div className="image-title">Picture</div>
           <label htmlFor="image" className="image">
-            Add Image <FaCameraRetro /> {file && file.name} {error}
+            <FaCameraRetro /> {error || (file && file.name) || "Add Image"}
           </label>
-          <input
-            type="file"
-            name="image"
-            id="image"
-            onChange={changeHandler}
-          />
+          <input type="file" name="image" id="image" onChange={changeHandler} />
         </div>
 
         <div className="form-group">
