@@ -1,4 +1,5 @@
 import { FaShoppingCart, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { MdSell } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -17,7 +18,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">Buy Sell</Link>
+        <Link to="/"><MdSell /> Buy Sell</Link>
       </div>
       <ul>
         {user ? (
