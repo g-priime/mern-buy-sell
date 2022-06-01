@@ -1,4 +1,4 @@
-import { FaCartPlus, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FaShoppingCart, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -23,7 +23,7 @@ function Header() {
         {user ? (
           <>
             <li>
-              <Link to="/cart"><FaCartPlus /></Link>
+              <Link to="/cart"><FaShoppingCart /></Link>
             </li>
             <li>
               <Link to="/add">Add Items</Link>

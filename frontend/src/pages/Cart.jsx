@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { FaCartArrowDown } from "react-icons/fa";
 
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
@@ -20,7 +21,7 @@ function Cart() {
   );
 
   let displayItems;
-  if(items.length > 0){
+  if (items.length > 0) {
     displayItems = items.slice();
   }
 
@@ -62,7 +63,7 @@ function Cart() {
                     className="btn"
                     onClick={() => dispatch(removeBuyerFromItem(item._id))}
                   >
-                    Remove from cart
+                    <FaCartArrowDown /> Remove from cart
                   </button>
                 }
               />

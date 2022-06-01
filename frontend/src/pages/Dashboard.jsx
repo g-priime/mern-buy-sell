@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { FaCartPlus } from "react-icons/fa";
+
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
 import {
@@ -20,7 +22,7 @@ function Dashboard() {
   );
 
   let displayItems;
-  if(items.length > 0){
+  if (items.length > 0) {
     displayItems = items.slice();
   }
 
@@ -54,9 +56,7 @@ function Dashboard() {
       <SearchForm />
 
       <section className="content">
-        <div>
-          {cat ? <>Results for: {cat}</> : <>All items</>}
-        </div>
+        <div>{cat ? <>Results for: {cat}</> : <>All items</>}</div>
         {items.length > 0 ? (
           <div className="items">
             {displayItems.reverse().map((item) => (
@@ -68,7 +68,7 @@ function Dashboard() {
                     className="btn"
                     onClick={() => dispatch(addBuyerToItem(item._id))}
                   >
-                    Add to cart
+                    <FaCartPlus /> Add to cart
                   </button>
                 }
               />
