@@ -44,7 +44,7 @@ function AddItems() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Add Items</p>
+        <p>Add Items</p>
       </section>
 
       <ItemForm />

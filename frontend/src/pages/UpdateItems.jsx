@@ -46,7 +46,7 @@ function UpdateItems() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Update Items</p>
+        <p>Update Items</p>
       </section>
 
       <section className="content">

@@ -40,7 +40,7 @@ function UpdateFormPage() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Update Form</p>
+        <p>Update Form</p>
       </section>
 
       {items ? <UpdateItemForm /> : <></>}

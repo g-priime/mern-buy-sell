@@ -50,7 +50,7 @@ function Dashboard() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Dashboard</p>
+        <p>Dashboard</p>
       </section>
 
       <SearchForm />

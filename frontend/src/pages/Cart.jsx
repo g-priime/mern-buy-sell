@@ -48,7 +48,7 @@ function Cart() {
   return (
     <>
       <section className="heading">
-        <p>Buy Sell Cart</p>
+        <p>Cart</p>
       </section>
 
       <section className="content">
