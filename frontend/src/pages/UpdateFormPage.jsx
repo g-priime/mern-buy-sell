@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import UpdateItemForm from "../components/UpdateItemForm";
 import ItemCard from "../components/ItemCard";
 import Spinner from "../components/Spinner";
-import { reset } from "../features/items/itemSlice";
+//import { reset } from "../features/items/itemSlice";
 
 function UpdateFormPage() {
   const navigate = useNavigate();
@@ -27,10 +27,11 @@ function UpdateFormPage() {
     if (!update) {
       navigate("/update");
     }
-
+/*
     return () => {
       dispatch(reset());
     };
+    */
   }, [user, navigate, isError, message, dispatch, update]);
 
   if (isLoading) {
