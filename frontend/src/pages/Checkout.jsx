@@ -4,15 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { reset } from "../features/items/itemSlice";
 
-
 function Checkout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { isLoading, isError, message } = useSelector(
-    (state) => state.items
-  );
+  const { isLoading, isError, message } = useSelector((state) => state.items);
 
   useEffect(() => {
     if (isError) {
@@ -33,8 +30,10 @@ function Checkout() {
   }
 
   return (
-    <div>Checkout</div>
-  )
+    <section className="heading">
+      <p>Checkout</p>
+    </section>
+  );
 }
 
-export default Checkout
+export default Checkout;
