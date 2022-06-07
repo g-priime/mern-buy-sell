@@ -60,12 +60,14 @@ function UpdateItemForm() {
         <div className="form-group">
           <label htmlFor="price">Price</label>
           <input
-            type="text"
+            type="number"
             name="price"
             id="price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
+            min="0"
+            max="1000000"
           />
         </div>
         <div className="form-group">
