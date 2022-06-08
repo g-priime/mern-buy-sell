@@ -14,6 +14,8 @@ function Login() {
 
   const { email, password } = formData;
 
+  const [passwordType, setPasswordType] = useState("password");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,15 +42,24 @@ function Login() {
     }));
   };
 
+  const togglePassword =()=>{
+    if(passwordType==="password")
+    {
+     setPasswordType("text")
+     return;
+    }
+    setPasswordType("password")
+  }
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     const userData = {
       email,
       password,
-    }
+    };
 
-    dispatch(login(userData))
+    dispatch(login(userData));
   };
 
   if (isLoading) {
@@ -80,7 +91,7 @@ function Login() {
           </div>
           <div className="form-group">
             <input
-              type="password"
+              type={passwordType}
               className="form-control"
               id="password"
               name="password"
@@ -89,6 +100,19 @@ function Login() {
               onChange={onChange}
               required
             />
+            <div className="input-group-btn">
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={togglePassword}
+              >
+                {passwordType === "password" ? (
+                  <i className="bi bi-eye-slash"></i>
+                ) : (
+                  <i className="bi bi-eye"></i>
+                )}
+              </button>
+            </div>
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-block">
